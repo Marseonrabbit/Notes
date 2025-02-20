@@ -1,4 +1,4 @@
-
+# Chapter 1: Computer Network Fundamentals
 
 ## 1.1 Introduction
 
@@ -279,4 +279,348 @@ This layer, again similar to the OSI model session layer, is a slightly removed 
 
 ![TCP Data Structure](attachment:tcp_data_structure.png)
 
-*Fig. 1.19 A T
+*Fig. 1.19 A TCP data structure*
+
+![UDP Data Structure](attachment:udp_data_structure.png)
+
+*Fig. 1.20 An UDP data structure*
+
+#### 1.6.2.3 Network Layer
+
+This layer moves packets, now called datagrams, from router to router along the path from a source host to the destination host. It supports a number of protocols including the Internet Protocol (IP), Internet Control Message Protocol (ICMP) and Internet Group Management Protocol (IGMP). The IP Protocol is the most widely used network layer protocol. IP uses header information from the transport layer protocols that include datagram source and destination port numbers from IP addresses, and other TCP header and IP information, to move datagrams from router to router through the network. Best routes are found in the network by using routing algorithms. Figure 1.21 shows the IP datagram structure.
+
+![IP Datagram Structure](attachment:ip_datagram_structure.png)
+
+*Fig. 1.21 An IP datagram structure*
+
+The standard IP address has been the so-called IPv4, a 32-bit addressing scheme. But with the rapid growth of the Internet, there was fear of running out of addresses, so IPv6, a new 64-bit addressing scheme, was created. The network layer conveys the network layer protocols to the data link layer.
+
+#### 1.6.2.4 Data Link Layer
+
+This layer provides the network with services that move packets from one packet switch like a router to the next over connecting links. This layer also offers reliable delivery of network layer packets over links. It is at the lowest level of communication, and it includes the network interface card (NIC) and operating system (OS) protocols. The protocols in this layer include: Ethernet, asynchronous transfer mode (ATM), and others such as frame relay. The data link layer protocol unit, the frame, may be moved over links from source to destination by different link layer protocols at different links along the way.
+
+#### 1.6.2.5 Physical Layer
+
+This layer is responsible for literally moving data link datagrams bit by bit over the links and between the network elements. The protocols here depend on and use the characteristics of the link medium and the signals on the medium.
+
+### 1.7 Network Services
+
+For a communication network to work effectively, data in the network must be able to move from one network element to another. This can only happen if the network services to move such data work. For data networks, these services fall into two categories:
+
+- **Connection services** to facilitate the exchange of data between the two network communicating end-systems with as little data loss as possible and in as little time as possible
+- **Switching services** to facilitate the movement of data from host to host across the length and width of the network mesh of hosts, hubs, bridges, routers, and gateways
+
+#### 1.7.1 Connection Services
+
+How do we get the network transmitting elements to exchange data over the network? Two types of connection services are used: the connected-oriented and connectionless services.
+
+##### 1.7.1.1 Connected-Oriented Services
+
+With a connection-oriented service, before a client can send packets with real data to the server, there must be a three-way handshake. We will define this three-way handshake in later chapters. But the purpose of a three-way handshake is to establish a session before the actual communication can begin. Establishing a session before data is moved creates a path of virtual links between the end systems through a network and therefore, guarantees the reservation and establishment of fixed communication channels and other resources needed for the exchange of data before any data is exchanged and as long as the channels are needed. For example, this happens whenever we place telephone calls; before we exchange words, the channels are reserved and established for the duration. Because this technique guarantees that data will arrive in the same order it was sent in, it is considered to be reliable. In short the service offers the following:
+
+- Acknowledgments of all data exchanges between the end-systems,
+- Flow control in the network during the exchange, and
+- Congestion control in the network during the exchange.
+
+Depending on the type of physical connections in place and the services required by the systems that are communicating, connection-oriented methods may be implemented in the data link layers or in the transport layers of the protocol stack, although the trend now is to implement it more at the transport layer. For example, TCP is a connection-oriented transport protocol in the transport layer. Other network technologies that are connection-oriented include the frame relay and ATMs.
+
+##### 1.7.1.2 Connectionless Service
+
+In a connectionless service, there is no handshaking to establish a session between the communicating end-systems, no flow control, and no congestion control in the network. This means that a client can start communicating with a server without warning or inquiry for readiness; it simply sends streams of packets, called datagrams, from its sending port to the server's connection port in single point-to-point transmissions with no relationship established between the packets and between the end-systems. There are advantages and of course disadvantages to this type of connection service. In brief, the connection is faster because there is no handshaking which can sometimes be time consuming, and it offers periodic burst transfers with large quantities of data and, in addition, it has simple protocol. However, this service offers minimum services, no safeguards and guarantees to the sender since there is no prior control information and no acknowledgment. In addition, the service does not have the reliability of the connection-oriented method, and offers no error handling and no packets ordering; in addition, each packet self-identifies that leads to long headers, and finally, there is no predefined order in the arrival of packets.
+
+Like the connection-oriented method, this service can operate both at the data link and transport layers. For example, UDP, a connectionless service, operates at the transport layer.
+
+#### 1.7.2 Network Switching Services
+
+Before we discuss communication protocols, let us take a detour and briefly discuss data transfer by a switching element. This is a technique by which data is moved from host to host across the length and width of the network mesh of hosts, hubs, bridges, routers, and gateways. This technique is referred to as data switching. The type of data switching technique used by a network determines how messages are transmitted between the two communicating elements and across that network. There are two types of data switching techniques: circuit switching and packet switching.
+
+##### 1.7.2.1 Circuit Switching
+
+In circuit switching networks, one must reserve all the resources before setting up a physical communication channel needed for communication. The physical connection, once established, is then used exclusively by the two end-systems, usually subscribers, for the duration of the communication. The main feature of such a connection is that it provides a fixed data rate channel, and both subscribers must operate at this rate. For example, in a telephone communication network, a connected line is reserved between the two points before the users can start using the service. One issue of debate on circuit switching is the perceived waste of resources during the so-called silent periods when the connection is fully in force but not being used by the parties. This situation occurs when, for example, during a telephone network session, a telephone receiver is not hung up after use, leaving the connection still established. During this period, while no one is utilizing the session, the session line is still open.
+
+##### 1.7.2.2 Packet Switching
+
+Packet switching networks, on the other hand, do not require any resources to be reserved before a communication session begins. These networks, however, require the sending host to assemble all data streams to be transmitted into packets. If a message is large, it is broken into several packets. Packet headers contain the source and the destination network addresses of the two communicating end-systems. Then, each of the packets is sent on the communication links and across packet switches (routers). On receipt of each packet, the router inspects the destination address contained in the packet. Using its own routing table, each router then forwards the packet on the appropriate link at the maximum available bit rate. As each packet is received at each intermediate router, it is forwarded on the appropriate link interspersed with other packets being forwarded on that link. Each router checks the destination address, if it is the owner of the packet; it then reassembles the packets into the final message.
+
+![Packet Switching Networks](attachment:packet_switching_networks.png)
+
+*Fig. 1.22 Packet switching networks*
+
+Packet switches are considered to be store-and-forward transmitters, meaning that they must receive the entire packet before the packet is retransmitted or switched on to the next switch.
+
+Because there is no predefined route for these packets, there can be unpredictably long delays before the full message can be re-assembled. In addition, the network may not dependably deliver all the packets to the intended destination. To ensure that the network has a reliably fast transit time, a fixed maximum length of time is allowed for each packet. Packet switching networks suffer from a few problems, including the following:
+
+- The rate of transmission of a packet between two switching elements depends on the maximum rate of transmission of the link joining them and on the switches themselves.
+- Momentary delays are always introduced whenever the switch is waiting for a full packet. The longer the packet, the longer the delay.
+- Each switching element has a finite buffer for the packets. It is thus possible for a packet to arrive only to find the buffer full with other packets. Whenever this happens, the newly arrived packet is not stored but gets lost, a process called packet dropping. In peak times, servers may drop a large number of packets. Congestion control techniques use the rate of packet drop as one measure of traffic congestion in a network.
+
+Packet switching networks are commonly referred to as packet networks for obvious reasons. They are also called asynchronous networks and in such networks, packets are ideal because there is a sharing of the bandwidth, and of course, this avoids the hassle of making reservations for any anticipated transmission. There are two types of packet switching networks:
+
+- **Virtual circuit network** in which a packet route is planned, and it becomes a logical connection before a packet is released and
+- **Datagram network**, which is the focus of this book.
+
+## 1.8 Network Connecting Devices
+
+Before we discuss network connecting devices, let us revisit the network infrastructure. We have defined a network as a mesh of network elements, commonly referred to as network nodes, connected together by conducting media. These network nodes can be either at the ends of the mesh, in which case they are commonly known as clients or in the middle of the network as transmitting elements. In a small network such as a LAN, the nodes are connected together via special connecting and conducting devices that take network traffic from one node and pass it on to the next node. If the network is big Internetwork (large networks of networks like WANs and LANs), these networks are connected to other special intermediate networking devices so that the Internet functions as a single large network.
+
+Now let us look at network connecting devices and focus on two types of devices: those used in networks (small networks such as LANs) and those used in internetworks.
+
+### 1.8.1 LAN Connecting Devices
+
+Because LANs are small networks, connecting devices in LANs are less powerful with limited capabilities. There are hubs, repeaters, bridges, and switches.
+
+#### 1.8.1.1 A Hub
+
+This is the simplest in the family of network connecting devices since it connects the LAN components with identical protocols. It takes in imports and re-transmits them verbatim. It can be used to switch both digital and analog data. In each node, pre-setting must be done to prepare for the formatting of the incoming data. For example, if the incoming data is in digital format, the hub must pass it on as packets; however, if the incoming data is analog, then the hub passes as a signal. There are two types of hubs: simple and multiple port hubs.
+
+![Simple Hub](attachment:simple_hub.png)
+
+*Fig. 1.23 A simple hub*
+
+![Multi-ported Hubs](attachment:multi_ported_hubs.png)
+
+*Fig. 1.24 Multi-ported hubs*
+
+Network hubs are designed to work with network adapters and cables and can typically run at either 10 Mbps or 100 Mbps; some hubs can run at both speeds. To connect computers with differing speeds, it is better to use hubs that run at both speeds $10 / 100 \mathrm{Mbps}$.
+
+#### 1.8.1.2 A Repeater
+
+A network repeater is a low-level local communication device at the physical layer of the network that receives network signals, amplifies them to restore them to full strength, and then re-transmits them to another node in the network. Repeaters are used in a network for several purposes including countering the attenuation that occurs when signals travel long distances, and extending the length of the LAN above the specified maximum. Since they work at the lowest network stack layer, they are less intelligent than their counterparts such as bridges, switches, routers, and gateways in the upper layers of the network stack.
+
+![Repeater in an OSI Model](attachment:repeater_osi_model.png)
+
+*Fig. 1.25 A repeater in an OSI model*
+
+#### 1.8.1.3 A Bridge
+
+A bridge is like a repeater but differs in that a repeater amplifies electrical signals because it is deployed at the physical layer; a bridge is deployed at the datalink and therefore amplifies digital signals. It digitally copies frames. It permits frames from one part of a LAN or a different LAN with different technology to move to another part or another LAN. However, in filtering and isolating a frame from one network to another or another part of the same network, the bridge will not move a damaged frame from one end of the network to the other. As it filters the data packets, the bridge makes no modifications to the format and content of the incoming data. A bridge filters the frames to determine whether a frame should be forwarded or dropped. All "noise" (collisions, faulty wiring, power surges, etc.) packets are not transmitted.
+
+The bridge filters and forwards frames on the network using a dynamic bridge table. The bridge table, which is initially empty, maintains the LAN addresses for each computer in the LAN and the addresses of each bridge interface that connects the LAN to other LANs. Bridges, like hubs, can be either simple or multi-ported.
+
+![Simple Bridge](attachment:simple_bridge.png)
+
+*Fig. 1.26 Simple bridge*
+
+![Multi-ported Bridge](attachment:multi_ported_bridge.png)
+
+*Fig. 1.27 Multi-ported bridge*
+
+![Position of a Bridge in an OSI Protocol Stack](attachment:bridge_osi_protocol_stack.png)
+
+*Fig. 1.28 Position of a bridge in an OSI protocol stack*
+
+#### 1.8.1.4 A Switch
+
+A switch is a network device that connects segments of a network or two small networks such as Ethernet or token ring LANs. Like the bridge, it also filters and forwards frames on the network with the help of a dynamic table. This point-to-point approach allows the switch to connect multiple pairs of segments at a time, allowing more than one computer to transmit data at a time, thus giving them a high performance over their cousins, the bridges.
+
+### 1.8.2 Internetworking Devices
+
+Internetworking devices connect together smaller networks, like several LANs creating much larger networks such as the Internet. Let us look at two of these connectors: the router and the gateway.
+
+#### 1.8.2.1 Routers
+
+Routers are general purpose devices that interconnect two or more heterogeneous networks represented by IP subnets or unnumbered point to point lines. They are usually dedicated special-purpose computers with separate input and output interfaces for each connected network. They are implemented at the network layer in the protocol stack.
+
+![Router in the OSI Protocol Stack](attachment:router_osi_protocol_stack.png)
+
+*Fig. 1.29 Router in the OSI protocol stack*
+
+According to RFC 1812, a router performs the following functions:
+
+- Conforms to specific Internet protocols specified in the 1812 document, including the Internet protocol (IP), Internet control message protocol (ICMP), and others as necessary.
+- Connects to two or more packet networks. For each connected network, the router must implement the functions required by that network because it is a member of that network. These functions typically include the following:
+- Encapsulating and decapsulating the IP datagrams with the connected network framing. For example, if the connected network is an Ethernet LAN, an Ethernet header and checksum must be attached.
+- Sending and receiving IP datagrams up to the maximum size supported by that network; this size is the network's maximum transmission unit or MTU.
+- Translating the IP destination address into an appropriate network-level address for the connected network. These are the Ethernet hardware address on the NIC, for Ethernet cards, if needed. Each network addresses the router as a member computer of its own network. This means that each router is a member of each network it connects to. It, therefore, has a network host address for that network and an interface address for each network it is connected to. Because of this rather strange characteristic, each router interface has its own address resolution protocol (ARP) module, its LAN address (network card address), and its own Internet protocol (IP) address.
+- Responding to network flow control and error indications, if any.
+- Receives and forwards Internet datagrams. Important issues in this process are buffer management, congestion control, and fairness. To do this the router must
+- Recognize error conditions and generate ICMP error and information messages as required.
+- Drop datagrams whose time-to-live fields have reached zero.
+- Fragment datagrams when necessary to fit into the maximum transmission unit (MTU) of the next network.
+- Chooses a next-hop destination for each IP datagram based on the information in its routing database.
+- Usually supports an interior gateway protocol (IGP) to carry out distributed routing and reachability algorithms with the other routers in the same autonomous system. In addition, some routers will need to support an exterior gateway protocol (EGP) to exchange topological information with other autonomous systems.
+- Provides network management and system support facilities, including loading, debugging, status reporting, exception reporting, and control.
+
+Forwarding an IP datagram from one network across a router requires the router to choose the address and relevant interface of the next-hop router or for the final hop if it is the destination host. The next-hop router is always in the next network of which the router is also a member. The choice of the next-hop router, called forwarding, depends on the entries in the routing table within the router.
+
+Routers are smarter than bridges in that the router with the use of a router table has some knowledge of possible routes a packet could take from its source to its destination. Once it finds the destination, it determines the best, fastest, and most efficient way of routing the package. The routing table, like in the bridge and switch, grows dynamically as activities in the network develop. On receipt of a packet, the router removes the packet headers and trailers and analyzes the IP header by determining the source and destination addresses and data type and noting the arrival time. It also updates the router table with new addresses if not already in the table. The IP header and arrival time information is entered in the routing table. If a router encounters an address it cannot understand, it drops the package. Let us explain the working of a router by an example using Fig. 1.30.
+
+In Fig. 1.30, suppose host A in LAN1 tries to send a packet to host B in LAN2. Both host A and host B have two addresses: the LAN (host) address and the IP address. The translation between host LAN addresses and IP addresses is done by the ARP, and data is retrieved or built into the ARP table, similar to Table 1.4. Notice also that the router has two network interfaces: interface 1 for LAN1 and interface 2 for LAN2 for the connection to a larger network such as the Internet. Each interface has a LAN (host) address for the network the interface connects on and a corresponding IP address. As we will see later in the chapter, host A sends a packet to router 1 at time 10:01 that includes, among other things, both its addresses, message type, and destination IP address of host B. The packet is received at interface 1 of the router; the router reads the packet and builds row 1 of the routing table as shown in Table 1.5.
+
+The router notices that the packet has to go to network 193.55.1.***, where ${ }^{* * *}$ are digits $0-9$, and it has knowledge that this network is connected on interface 2. It forwards the packet to interface 2. Now, interface 2 with its own ARP may know host B. If it does, then it forwards the packet and updates the routing table with the inclusion of row 2. What happens when the ARP at the router interface 1 cannot determine the next network? That is, if it has no knowledge of the presence of network 193.55.1. ${ }^{* * *}$, it will then ask for help from a gateway. Let us now discuss how IP chooses a gateway to use when delivering a datagram to a remote network.
+
+#### 1.8.2.2 Gateways
+
+Gateways are more versatile devices than routers. They perform protocol conversion between different types of networks, architectures, or applications and serve as translators and interpreters for network computers that communicate in different protocols and operate in dissimilar networks, for example, OSI and TCP/IP. Because the networks are different with different technologies, each network has its own routing algorithms, protocols, domain names servers, and network administration procedures and policies. Gateways perform all of the functions of a router and more. The gateway functionality that does the translation between different network technologies and algorithms is called a protocol converter.
+
+![Position of a Gateway](attachment:gateway_position.png)
+
+*Fig. 1.31 Position of a gateway*
+
+Gateways services include packet format and/or size conversion, protocol conversion, data translation, terminal emulation, and multiplexing. Since gateways perform a more complicated task of protocol conversion, they operate more slowly and handle fewer devices.
+
+Let us now see how a packet can be routed through a gateway or several gateways before it reaches its destination. We have seen that if a router gets a datagram, it checks the destination address and finds that it is not on the local network. It, therefore, sends it to the default gateway. The default gateway now searches its table for the destination address. In case the default gateway recognizes that the destination address is not on any of the networks it is connected to directly, it has to find yet another gateway to forward it through.
+
+The routing information the server uses for this is in a gateway routing table linking networks to gateways that reach them. The table starts with the network entry 0.0.0.0, a catch-all entry, for default routes. All packets to an unknown network are sent through the default route. Table 1.6 shows the gateway routing table.
+
+| Network | Gateway | Interface |
+| :-- | :-- | :-- |
+| 0.0 .0 .0 | 192.133 .1 .1 | 1 |
+| 127.123 .0 .1 | 198.24 .0 .1 | 2 |
+
+*Table 1.6 A gateway routing table*
+
+The choice between a router, a bridge, and a gateway is a balance between functionality and speed. Gateways, as we have indicated, perform a variety of functions; however, because of this variety of functions, gateways may become bottlenecks within a network because they are slow.
+
+Routing tables may be built either manually for small LANs or by using software called routing daemons for larger networks.
+
+## 1.9 Network Technologies
+
+Earlier in this chapter, we indicated that computer networks are basically classified according to their sizes with the local area networks (LANs) covering smaller areas, and the bigger ones covering wider areas (WANs). In this last section of the chapter, let us look at a few network technologies in each one of these categories.
+
+### 1.9.1 LAN Technologies
+
+Recall our definition of a LAN at the beginning of this chapter. We defined a LAN to be a small data communication network that consists of a variety of machines that are all part of the network and cover a geographically small area such as one building or one floor. Also, a LAN is usually owned by an individual or a single entity such as an organization. According to IEEE 802.3 Committee on LAN Standardization, a LAN must be a moderately sized and geographically shared peer-to-peer communication network broadcasting information for all on the network to hear via a common physical medium on a point-to-point basis with no intermediate switching element required. Many common network technologies today fall into this category including the popular Ethernet, the widely used token ring/IEEE 805.2, and the fiber distributed data interface (FDDI).
+
+#### 1.9.1.1 Star-Based Ethernet (IEEE 802.3) LAN
+
+Ethernet technology is the most widely used of all LAN technologies and it has been standardized by the IEEE 802.3 Committee on Standards. The IEEE 802.3 standards define the medium access control (MAC) layer and the physical layer. The Ethernet MAC is a carrier sense multiple access with collision detection (CSMA/CD) system. With CSMA, any network node that wants to transmit must listen first to the medium to make sure that there is no other node already transmitting. This is called the carrier sensing of the medium. If there is already a node using the medium, then the element that was intending to transmit waits; otherwise it transmits. In case, two or more elements are trying to transmit at the same time, a collision will occur and the integrity of the data for all is compromised. However, the element may not know this. So it waits for an acknowledgment from the receiving node. The waiting period varies, taking into account maximum round-trip propagation delay and other unexpected delays. If no acknowledgment is received during that time, the element then assumes that a collision has occurred and the transmission was unsuccessful and therefore it must retransmit. If more collisions were to happen, then the element must now double the delay time and so on. After a collision, when the two elements are in delay period, the medium may be idle and this may lead to inefficiency. To correct this situation, the elements, instead of just going into the delay mode, must continue to listen onto the medium as they transmit. In this case, they will not only be doing carrier sensing but also detecting a collision that leads to CSMA/CD. According to Stallings, the CSMA/CD scheme follows the following algorithm:
+
+- If the medium is idle, transmit.
+- If the medium busy, continue to listen until idle, then transmit immediately.
+- If collision is detected, transmit jamming signal for "collision warning" to all other network elements.
+- After jamming the signal, wait random time units and attempt to transmit.
+
+![Ethernet Frame Structure](attachment:ethernet_frame_structure.png)
+
+*Fig. 1.32 An ethernet frame structure*
+
+A number of Ethernet LANs are based on the IEEE 802.3 standards, including
+
+- 10 BASE-X (where $\mathrm{X}=2,5, \mathrm{~T}$ and $\mathrm{F} ; \mathrm{T}=$ twisted pair and $\mathrm{F}=$ fiber optics)
+- 100 BASE-T (where the T options include T4, TX, and FX)
+- 1000 BASE-T (where T options include LX, SX, T, and CX)
+
+The basic Ethernet transmission structure is a frame and it is shown in Fig. 1.32.
+
+The source and destination fields contain 6-byte LAN addresses of the form xx-xx-xx-xx-xx-xx, where x is a hexadecimal integer. The error detection field is 4 bytes of bits used for error detection, usually using the cyclic redundancy check (CRC) algorithm, in which the source and destination elements synchronize the values of these bits.
+
+#### 1.9.1.2 Token Ring/IEEE 805.2
+
+Token ring LANs based on IEEE 805.2 are also used widely in commercial and small industrial networks, although not as popular as Ethernet. The standard uses a frame called a token that circulates around the network so that all network nodes have equal access to it. As we have seen previously, token ring technology employs a mechanism that involves passing the token around the network so that all network elements have equal access to it.
+
+Whenever a network element wants to transmit, it waits for the token on the ring to make its way to the element's connection point on the ring. When the token arrives at this point, the element grabs it and changes one bit of the token that becomes the start bit in the data frame the element will be transmitting. The element then inserts data, addressing information and other fields and then releases the payload onto the ring. It then waits for the token to make a round and come back. The receiving host must recognize the destination MAC address within the frame as its own. Upon receipt, the host identifies the last field indicating the recognition of the MAC address as its own. The frame contents are then copied by the host, and the frame is put back in circulation. On reaching the network element that still owns the token, the element withdraws the token and a new token is put on the ring for another network element that may need to transmit.
+
+Because of its round-robin nature, the token ring technique gives each network element a fair chance of transmitting if it wants to. However, if the token ever gets lost, the network business is halted.
+
+![Token Data Frame](attachment:token_data_frame.png)
+
+*Fig. 1.33 A token data frame*
+
+Like Ethernet, the token ring has a variety of technologies based on the transmission rates.
+
+#### 1.9.1.3 Other LAN Technologies
+
+In addition to those we have discussed earlier, several other LAN technologies are in use, including the following:
+
+- **Asynchronous transfer mode (ATM)** with the goal of transporting real-time voice, video, text, e-mail, and graphic data. ATM offers a full array of network services that make it a rival of the Internet network.
+- **Fiber distributed data interface (FDDI)** is a dual-ring network that uses a token ring scheme with many similarities to the original token ring technology.
+- **AppleTalk**, the popular Mac users' LAN.
+
+### 1.9.2 WAN Technologies
+
+As we defined it earlier, WANs are data networks like LANs but they cover a wider geographical area. Because of their sizes, WANs traditionally provide fewer services to customers than LANs. Several networks fall into this category, including the integrated services digital network (ISDN), X.25, frame relay, and the popular Internet.
+
+#### 1.9.2.1 Integrated Services Digital Network (ISDN)
+
+ISDN is a system of digital phone connections that allows data to be transmitted simultaneously across the world using end-to-end digital connectivity. It is a network that supports the transmission of video, voice, and data. Because the transmission of these varieties of data, including graphics, usually puts widely differing demands on the communication network, service integration for these networks is an important advantage to make them more appealing. The ISDN standards specify that subscribers must be provided with
+
+- **Basic rate interface (BRI)** services of two full-duplex 64-kbps B channels - the bearer channels, and one full-duplex 16-kbps D channel - the data channel. One B channel is used for digital voice and the other for applications such as data transmission. The D channel is used for telemetry and for exchanging network control information. This rate is for individual users.
+- **Primary rate interface (PRI)** services consisting of $2364-\mathrm{kbps}$ B channels and one 64-kbps D channel. This rate is for all large users.
+
+BRI can be accessed only if the customer subscribes to an ISDN phone line and is within 18,000 feet (about 3.4 miles or 5.5 km) of the telephone company central office. Otherwise, expensive repeater devices are required that may include ISDN terminal adapters and ISDN routers.
+
+#### 1.9.2.2 X.25
+
+X.25 is the International Telecommunication Union (ITU) protocol developed in 1993 to bring interoperability to a variety of many data communication wide area networks (WANs), known as public networks, owned by private companies, organizations, and governments agencies. By doing so, X.25 describes how data passes into and out of public data communications networks. X.25 is a connection-oriented and packet-switched data network protocol with three levels corresponding to the bottom three layers of the OSI model as follows: the physical level corresponds to the OSI physical layer; the link level corresponds to OSI data link layer; and the packet level corresponds to the OSI network layer.
+
+In full operation, the X.25 networks allow remote devices known as data terminal equipment (DTE) to communicate with each other across high-speed digital links, known as data circuit-terminating equipment (DCE), without the expense of individual leased lines. The communication is initiated by the user at a DTE setting up calls using standardized addresses. The calls are established over virtual circuits, which are logical connections between the originating and destination addresses.
+
+On receipt, the called users can accept, clear, or redirect the call to a third party. The virtual connections we mentioned above are of the following two types:
+
+- **Switched virtual circuits (SVCs)** - SVCs are very much like telephone calls; a connection is established, data is transferred, and then the connection is released. Each DTE on the network is given a unique DTE address that can be used much like a telephone number.
+- **Permanent virtual circuits (PVCs)** - a PVC is similar to a leased line in that the connection is always present. The logical connection is established permanently by the packet-switched network administration. Therefore, data may always be sent without any call setup.
+
+Both of these circuits are used extensively, but since user equipment and network systems supported both X.25 PVCs and X.25 SVCs, most users prefer the SVCs since they enable the user devices to set up and tear down connections as required.
+
+Because X.25 is a reliable data communications with a capability over a wide range of quality of transmission facilities, it provides advantages over other WAN technologies, for example,
+
+- Unlike frame relay and ATM technologies that depend on the use of high-quality digital transmission facilities, X.25 can operate over either analog or digital facilities.
+- In comparison with TCP/IP, one finds that TCP/IP has only end-to end error checking and flow control, while X.25 is error checked from network element to network element.
+
+X.25 networks are in use throughout the world by large organizations with widely dispersed and communication-intensive operations in sectors such as finance, insurance, transportation, utilities, and retail.
+
+#### 1.9.2.3 Other WAN Technologies
+
+The following are other WAN technologies that we would like to discuss but cannot include because of space limitations:
+
+- **Frame relay** is a packet-switched network with the ability to multiplex many logical data conversions over a single connection. It provides flexible efficient channel bandwidth using digital and fiber-optic transmission. It has many similar characteristics to X.25 network except in format and functionality.
+- **Point-to-point Protocol (PPP)** is the Internet standard for transmission of IP packets over serial lines. The point-to-point link provides a single, pre-established communications path from the ending element through a carrier network, such as a telephone company, to a remote network. These links can carry datagram or data-stream transmissions.
+- **x Direct service line (xDSL)** is a technology that provides an inexpensive, yet very fast connection to the Internet.
+- **Switched multi-megabit data service (SMDS)** is a connectionless service operating in the range of $1.5-100 \mathrm{Mbps}$; any SMDS station can send a frame to any other station on the same network.
+- **Asynchronous transfer mode (ATM)** is already discussed as a LAN technology.
+
+### 1.9.3 Wireless LANs
+
+The rapid advances, miniaturization, and the popularity of wireless technology have opened a new component of LAN technology. The mobility and relocation of workers has forced companies to move into new wireless technologies with emphasis on wireless networks extending the local LAN into a wireless LAN. There are basically four types of wireless LANs:
+
+- **LAN extension** is a quick wireless extension to an existing LAN to accommodate new changes in space and mobile units.
+- **Cross-building interconnection** establishes links across buildings between both wireless and wired LANs.
+- **Nomadic access** establishes a link between a LAN and a mobile wireless communication device such as a laptop computer.
+- **Ad hoc Networking** is a peer-to-peer network temporarily set up to meet some immediate need. It usually consists of laptops, handheld, PCs, and other communication devices.
+- **Personal area networks (PANs)** that include the popular BlueTooth networks.
+
+There are several wireless IEEE 802.11-based LAN types, including
+
+- Infrared
+- Spread Spectrum
+- Narrowband Microwave
+
+Wireless technology is discussed in further detail in Chapter 17.
+
+## 1.10 Conclusion
+
+We have developed the theory of computer networks and discussed the topologies, standards, and technologies of these networks. Because we were limited by space, we could not discuss a number of interesting and widely used technologies both in LAN and WAN areas. However, our limited discussion of these technologies should give the reader an understanding and scope of the changes that are talking place in network technologies. We hope that the trend will keep the convergence of the LAN, WAN, and wireless technologies on track so that the alarming number of different technologies is reduced and basic international standards are established.
+
+## Exercises
+
+1. What is a communication protocol?
+2. Why do we need communication protocols?
+3. List the major protocols discussed in this chapter.
+4. In addition to ISO and TCP/IP, what are the other models?
+5. Discuss two LAN technologies that are NOT Ethernet or token ring.
+6. Why is Ethernet technology more appealing to users than the rest of the LAN technologies?
+7. What do you think are the weak points of TCP/IP?
+8. Discuss the pros and cons of four LAN technologies.
+9. List four WAN technologies.
+10. What technologies are found in MANs? Which of the technologies listed in 8 and 9 can be used in MANs?
+
+## Advanced Exercises
+
+1. X.25 and TCP/IP are very similar but there are differences. Discuss these differences.
+2. Discuss the reasons why ISDN failed to catch on as WAN technology.
+3. Why is it difficult to establish permanent standards for a technology like WAN or LAN?
+4. Many people see BlueTooth as a personal wireless network (PAN). Why is this so? What standard does BlueTooth use?
+5. Some people think that BlueTooth is a magic technology that is going to change the world. Read about BlueTooth and discuss this assertion.
+6. Discuss the future of wireless LANs.
+7. What is a wireless WAN? What kind of technology can be used in it? Is this the wave of the future?
+8. With the future in mind, compare and contrast ATMs and ISDN technologies.
+9. Do you foresee a fusion between LAN, MAN, and WAN technologies in the future? Support your response.
+10. Network technology is in transition. Discuss the direction of network technology.
+
+## References
+
+1. William Stallings. Local and Metropolitan Area Network, Sixth Edition. Prentice Hall, 2000.
+2. Douglas E. Comar. Internetworking with TCP/IP: Principles, Protocols, and Architecture, Fourth Edition. Prentice-Hall, 2000.
+3. RFC 1812. Requirements for IP Version 4 Routers [http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc1812.html#sec-2.2.3](http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc1812.html#sec-2.2.3).
+4. Sangoma Technologies [http://www.sangoma.com/x25.htm](http://www.sangoma.com/x25.htm).
