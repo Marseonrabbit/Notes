@@ -23,7 +23,6 @@ Before data can be transmitted, it needs to be encoded into a format suitable fo
 
 1. **Analog Encoding** : Used for analog data like sound or voice. It sends continuous waves.
 2. **Digital Encoding** : Used for digital data like binary streams. It sends signals using two voltage levels to represent 0s and 1s.
-
 ### Summary
 
 - **Transmission Technology** : Determines how data is sent (analog or digital).

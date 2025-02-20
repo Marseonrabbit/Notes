@@ -1,7 +1,6 @@
 `Digital data is made up of **1s and 0s** . To send this data over an **analog medium** like a telephone line, we need to convert it into an analog signal. This process is called **modulation** , and the device that does this is called a **modem** (modulator-demodulator).
 
 ### 1. **Carrier Signal**
-
 ---
 - A **carrier signal** is a continuous wave (usually a sine wave) that acts as the base for transmitting data.
 - The carrier signal has three main properties that can be changed to encode digital data:
@@ -12,8 +11,8 @@
 By changing one or more of these properties, we can represent binary data (1s and 0s).
 
 ### 2. **Modulation Techniques**
-
-There are three common ways to encode digital data into analog signals:
+---
+		There xare three common ways to encode digital data into analog signals:
 
 #### **(a) Amplitude Modulation (AM)**
 
