@@ -32,3 +32,6 @@ Before data can be transmitted, it needs to be encoded into a format suitable fo
 
 This is the foundation of how data moves across networks!
 
+[[Analog Encoding of Digital Data]]
+[[Digital Encoding of Digital Data]]
+[[Multiplexing of Transmission Signals]]
