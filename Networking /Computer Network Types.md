@@ -1,7 +1,7 @@
 
 ---
 `It comes with in different sizes and each network is cluster of netwrok elements and their resources and the network depends on the size of cluster
-
+[[]]
 ### Local Area Network
 
 ---
@@ -22,4 +22,6 @@
 
 ---
 `it covers slighly wider area than LAN but not that much wide to consider as WAN.
+
 ![[Pasted image 20250220174409.png]]
+
