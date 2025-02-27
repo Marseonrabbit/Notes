@@ -34,12 +34,12 @@ Core function: Propagation/processing of signals between network elements using 
   - Negative voltage = 1, Positive voltage = 0  
   - Requires precise clock synchronization  
   - Used in RS-232 serial communication  
-
+![[Pasted image 20250227171152.png]]
 - **NRZ-I**  
   - Encodes 1s as voltage transitions, 0s as no change  
   - Reduces baseline drift issues  
   - Found in USB 2.0 protocols  
-
+![[Pasted image 20250227171207.png]]
 - **Manchester Encoding**  
   - Combines clock + data signals (transition at midpoint of each bit)  
   - Used in **Ethernet (10BASE-T)** and IEEE 802.3 standards  
@@ -83,7 +83,7 @@ Core function: Propagation/processing of signals between network elements using 
   - **Cat5e**: 1 Gbps up to 100m  
   - **Cat6A**: 10 Gbps up to 100m  
 - **Shielding**: UTP (unshielded) vs STP (foil shielded)  
-
+![[Pasted image 20250227171334.png]]
 **Coaxial Cable (IEEE 802.3)**  
 - **Thinnet (RG-58)**:  
   - 5 mm diameter, 10 Mbps up to 185m  
@@ -98,7 +98,7 @@ Core function: Propagation/processing of signals between network elements using 
   - **OM4 Multi-mode**: 100 Gbps up to 150m  
   - **OS2 Single-mode**: 100 Gbps up to 10 km  
 - **Connectors**: LC, SC, MTP® (85% market share)  
-
+![[Pasted image 20250227171317.png]]
 ---
 
 ### 2.2 Wireless Media
@@ -145,4 +145,4 @@ Core function: Propagation/processing of signals between network elements using 
 - **Security**: Fiber (NSA-certified) > Coaxial > Wireless  
 - **Installation**: Wireless < Twisted Pair < Coaxial << Fiber  
 
-[[Network Topology]] [[Modulation Techniques]] [[Encoding Schemes]] [[IEEE Standards]]
+[[Network Topology]] [[Modulation Techniques]] [[Network Topology]] [[IEEE Standards]]
