@@ -1,0 +1,1 @@
+- comoputer![[7ce6dc44-edf7-4497-9c2e-dff7d44b5f9d 1.jpeg]]
