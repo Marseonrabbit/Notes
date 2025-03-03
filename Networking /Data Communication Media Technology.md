@@ -83,7 +83,7 @@ Core function: Propagation/processing of signals between network elements using 
   - **Cat5e**: 1 Gbps up to 100m  
   - **Cat6A**: 10 Gbps up to 100m  
 - **Shielding**: UTP (unshielded) vs STP (foil shielded)  
-![[Pasted image 20250227171334.png]]
+
 **Coaxial Cable (IEEE 802.3)**  
 - **Thinnet (RG-58)**:  
   - 5 mm diameter, 10 Mbps up to 185m  
@@ -145,4 +145,4 @@ Core function: Propagation/processing of signals between network elements using 
 - **Security**: Fiber (NSA-certified) > Coaxial > Wireless  
 - **Installation**: Wireless < Twisted Pair < Coaxial << Fiber  
 
-[[Network Topology]] [[Modulation Techniques]] [[Network Topology]] [[IEEE Standards]]
+[[Networking /Network Topology]] [[Modulation Techniques]] [[Networking /Network Topology]] [[IEEE Standards]]

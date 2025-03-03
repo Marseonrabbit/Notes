@@ -1,0 +1,1 @@
+Computer networks, whether LANs, MANs, or WANs, are constructed based on a topology. The are several topologies including the following popular ones.

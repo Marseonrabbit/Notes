@@ -1,7 +1,7 @@
 Network structure determines communication patterns, fault tolerance, and scalability. Key topologies include:
 
 ---
-## 1.5.1 Mesh Topology  
+## Mesh Topology  
 **Structure**:  
 - **Full Mesh**: Every node connected to every other node  
 - **Partial Mesh**: Selective node interconnections  
@@ -22,7 +22,7 @@ Network structure determines communication patterns, fault tolerance, and scalab
 
 ---
 
-## 1.5.2 Tree Topology  
+## Tree Topology  
 **Hierarchical Structure**:  
 - **Root Node**: Central authority (e.g., core router)  
 - **Parent-Child Links**: Strict hierarchy without loops  
@@ -38,7 +38,7 @@ Network structure determines communication patterns, fault tolerance, and scalab
 
 ---
 
-## 1.5.3 Bus Topology  
+## Bus Topology  
 **Key Features**:  
 - **Shared Medium**: All nodes connect to a single backbone (bus)  
 - **Collision Handling**:  
@@ -57,7 +57,7 @@ Network structure determines communication patterns, fault tolerance, and scalab
 
 ---
 
-## 1.5.4 Star Topology  
+## Star Topology  
 **Centralized Architecture**:  
 - **Hub/Switch**: Central node managing all traffic  
 - **Point-to-Point Links**: Dedicated connections from devices to hub  
@@ -77,7 +77,7 @@ Network structure determines communication patterns, fault tolerance, and scalab
 
 ---
 
-## 1.5.5 Ring Topology  
+## Ring Topology  
 **Token-Passing Mechanism**:  
 - **Token Frame**: Special 3-byte packet (IEEE 802.5 standard)  
 - **Deterministic Access**: Nodes transmit only when holding token  
@@ -96,7 +96,7 @@ Network structure determines communication patterns, fault tolerance, and scalab
 
 ---
 
-## 1.5.6 Hybrid Topologies  
+## Hybrid Topologies  
 **Common Combinations**:  
 - **Star-Wired Bus**: Ethernet with hierarchical switches  
 - **Star-Ring**: Token Ring networks using MAUs (Multistation Access Units)  
