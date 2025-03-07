@@ -1,16 +1,4 @@
-Computer networks can be configured using various models. The most common are the centralized and distributed models.
-## Centralized Model
-
-- **Structure**: Multiple computers and devices are interconnected and communicate through a single central computer, known as the master.
-- **Dependencies**: Surrogate computers may have limited local resources and rely on the master for global resource control.
-- **Communication**: All interactions must pass through the master.
+- There are several configuration models that form a computer network. The most common of these are the centralized and distributed models. In a centralized model, several computers and devices are interconnected, and can talk to each other. However, there is only one central computer, called the master, through which all correspondence must take place. Dependent computers, called surro- gates, may have reduced local resources, such as memory, and sharable global resources are controlled by the master at the center. Unlike the centralized model, however, the distributed network consists of loosely coupled comput- ers interconnected by a communication network consisting of connecting ele- ments and communication channels. The computers themselves may own their resources locally or may request resources from a remote computer. These com- puters are known by a string of names, including host, client, or node. If a host has resources that other hosts need, then that host is known as a server. Commu- nication and sharing of resources are not controlled by the central computer but are arranged between any two communicating elements in the network. Figures 1.2 and 1.3 show a crntralized network model and a distributed network model, respectively.
 ![[Pasted image 20250227165334.png]]
-## Distributed Model
 
-- **Structure**: Loosely coupled computers connected via a communication network consisting of connecting elements and channels.
-- **Resource Ownership**: Computers can own resources locally or request them from remote computers.
-- **Terminology**: Computers are referred to as hosts, clients, or nodes. A host providing resources to others is called a server.
-- **Communication**: Resource sharing and communication occur directly between any two elements without central control.
 ![[Pasted image 20250227165425.png]]
-
-These models highlight different approaches to managing resources and communication within a network.
