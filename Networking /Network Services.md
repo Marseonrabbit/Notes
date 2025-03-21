@@ -38,7 +38,21 @@ In circuit switching networks, one must reserve all the resources before setting
 
 Packet switching networks, on the other hand, do not require any resources to be reserved before a communication session begins. These networks, however, require the sending host to assemble all data streams to be transmitted into packets. If a message is large, it is broken into several packets. Packet headers contain the source and the destination network addresses of the two communicating end-systems. Then, each of the packets is sent on the communication links and across packet switches (routers). On receipt of each packet, the router inspects the destination address contained in the packet. Using its own routing table, each router then for- wards the packet on the appropriate link at the maximum available bit rate. As each Packet is received at each intermediate router, it is forwarded on the appropriate link interspersed with other packets being forwarded on that link. Each router checks the destination address, if it is the owner of the packet; it then reassembles the packets into the final message. Figure 1.22 shows the role of routers in packet switching networks.
 
-Packet switches are considered to be store-and-forward transmitters, mean- ing that they must receive the entire packet before the packet is retransmitted or switched on to the next switch
+Packet switches are considered to be store-and-forward transmitters, mean- ing that they must receive the entire packet before the packet is retransmitted or switched on to the next switch.
 
-Because there is no predefined route for these packets, there can be unpredictably long delays before the full message can be re-assembled. In addition, the network may not dependably deliver all the packets to the intended destination. To ensure that the network has a reliably fast transit time, a fixed maximum length of time is allowed for each packet. Packet switching networks suffer from a few problems, including the following
+Because there is no predefined route for these packets, there can be unpredictably long delays before the full message can be re-assembled. In addition, the network may not dependably deliver all the packets to the intended destination. To ensure that the network has a reliably fast transit time, a fixed maximum length of time is allowed for each packet. Packet switching networks suffer from a few problems, including the following:
+
+- The rate of transmission of a packet between two switching elements depends on• the maximum rate of transmission of the link joining them and on the switches themselves.
+- Momentary delays are always introduced whenever the switch is waiting for a• full packet. The longer the packet, the longer the delay.
+- Each switching element has a finite buffer for the packets. It is thus possible for• a packet to arrive only to find the buffer full with other packets. Whenever this happens, the newly arrived packet is not stored but gets lost, a process called packet dropping. In peak times, servers may drop a large number of packets. Congestion control techniques use the rate of packet drop as one measure of traffic congestion in a network.
+
+Packet switching networks are commonly referred to as packet networks for obvious reasons. They are also called asynchronous networks and in such networks, packets are ideal because there is a sharing of the bandwidth, and of course, this avoids the hassle of making reservations for any anticipated transmission. There are two types of packet switching networks:
+
+- virtual circuit network• in which a packet route is planned, and it becomes a logical connection before a packet is released and datagram network• , which is the focus of this book
+
+![[Pasted image 20250321104339.png]]
+
+
+
+
 
