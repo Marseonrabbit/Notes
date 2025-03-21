@@ -21,3 +21,17 @@ This layer, very similar to the application layer in the OSI model, provides the
 This layer, again similar to the OSI model session layer, is a slightly removed from the user and is hidden from the user. Its main purpose is to transport application layer messages that include application layer protocols in their headers between the host and the server. For the Internet network, the transport layer has two standard protocols: transport control protocol (TCP) and user datagram protocol (UDP). TCP provides a connection-oriented service, and it guarantees the delivery of all application layer packets to their destination. This guarantee is based on two mecha- nisms: congestion control that throttles the transmission rate of the source element when there is traffic congestion in the network and the flow control mechanism that tries to match sender and receiver speeds to synchronize the flow rate and reduce the packet drop rate. While TCP offers guarantees of delivery of the application layer packets, UDP, on the other hand, offers no such guarantees. It provides a no- frills connectionless service with just delivery and no acknowledgements. But it is much more efficient and a protocol of choice for real-time data such as streaming video and music. Transport layer delivers transport layer packets and protocols to the network layer. Figure 1.19 shows the TCP data structure, and Fig. 1.20 shows the UDP data structure.
 
 ![[Pasted image 20250321100906.png]]
+### Network Layer
+
+This layer moves packets, now called datagrams, from router to router along the path from a source host to the destination host. It supports a number of protocols including the Internet Protocol (IP), Internet Control Message Protocol (ICMP) and Internet Group Management Protocol (IGMP). The IP Protocol is the most widely used network layer protocol. IP uses header information from the transport layer protocols that include datagram source and destination port numbers from IP addresses, and other TCP header and IP information, to move datagrams from router to router through the network. Best routes are found in the network by using routing algorithms. Figure 1.21 shows the IP datagram structure. The standard IP address has been the so-called IPv4, a 32-bit addressing scheme. But with the rapid growth of the Internet, there was fear of running out of addresses, so IPv6, a new 64-bit addressing scheme, was created. The network layer conveys the network layer protocols to the data link layer.
+
+![[Pasted image 20250321101327.png]]
+### Data Link Layer
+
+This layer provides the network with services that move packets from one packet switch like a router to the next over connecting links. This layer also offers reliable delivery of network layer packets over links. It is at the lowest level of communication, and it includes the network interface card (NIC) and operating system (OS) protocols. The protocols in this layer include: Ethernet, asynchronous transfer mode (ATM), and others such as frame relay. The data link layer protocol unit, the frame, may be moved over links from source to destination by different link layer protocols at different links along the way.
+
+### Physical Layer
+
+This layer is responsible for literally moving data link datagrams bit by bit over the links and between the network elements. The protocols here depend on and use the characteristics of the link medium and the signals on the medium.
+
+
