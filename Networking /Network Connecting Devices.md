@@ -60,3 +60,15 @@ The router notices that the packet has to go to network 193.55.1.***, where *** 
 
 ![[Pasted image 20250321110034.png]]
 ![[Pasted image 20250321110225.png]]
+
+### Gateways
+
+Gateways are more versatile devices than routers. They perform protocol conver- sion between different types of networks, architectures, or applications and serve as translators and interpreters for network computers that communicate in differ- ent protocols and operate in dissimilar networks, for example, OSI and TCP/IP. Because the networks are different with different technologies, each network has its own routing algorithms, protocols, domain names servers, and network administra- tion procedures and policies. Gateways perform all of the functions of a router and more. The gateway functionality that does the translation between different network technologies and algorithms is called a protocol converter. Figure 1.31 shows the position of a gateway in a network.
+
+Gateways services include packet format and/or size conversion, protocol con- version, data translation, terminal emulation, and multiplexing. Since gateways per- form a more complicated task of protocol conversion, they operate more slowly and handle fewer devices.
+
+Let us now see how a packet can be routed through a gateway or several gate- ways before it reaches its destination. We have seen that if a router gets a datagram, it checks the destination address and finds that it is not on the local network. It, therefore, sends it to the default gateway. The default gateway now searches its table for the destination address. In case the default gateway recognizes that the destination address is not on any of the networks it is connected to directly, it has to find yet another gateway to forward it through.
+
+![[Pasted image 20250321112900.png]]
+
+The routing information the server uses for this is in a gateway routing table link- ing networks to gateways that reach them. The table starts with the network entry 0.0.0.0, a catch-all entry, for default routes. All packets to an unknown network are sent through the default route. Table 1.6 shows the gateway routing table. The choice between a router, a bridge, and a gateway is a balance between func- tionality and speed. Gateways, as we have indicated, perform a variety of functions; however, because of this variety of functions, gateways may become bottlenecks within a network because they are slow. Routing tables may be built either manually for small LANs or by using software called routing daemons for larger networks.
