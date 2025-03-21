@@ -1,0 +1,4 @@
+A new movement was, therefore, born. It was called the open system movement, which called for computer hardware and software manufacturers to come up with a way for this to happen. But to make this possible, standardization of equipment and software was needed. To help in this effort and streamline computer communica- tion, the International Standards Organization (ISO) developed the Open System Interconnection (OSI) model. The OSI is an open architecture model that functions as the network communication protocol standard, although it is not the most widely used one. The Transport Control Protocol/Internet Protocol (TCP/IP) model, a rival model to OSI, is the most widely used. Both OSI and TCP/IP models use two proto- col stacks, one at the source element and the other at the destination element.
+
+---
+## Open System Interconnection (OSI) Protocol Suite
