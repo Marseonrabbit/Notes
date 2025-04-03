@@ -17,4 +17,6 @@ The Hardware component is made of network elements consisting a collection of no
 
 there are Network software full of application programs and network protocols that is used to synchronize, coordinate and bring sharing the data among the network elements.
 
-so that the users can do work together and every yse
+so that the users can do work together and every user can share their resources.
+
+![[Pasted image 20250401134850.png]]
