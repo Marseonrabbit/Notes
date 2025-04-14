@@ -1,0 +1,1 @@
+Ipv4 is 32 bits 
