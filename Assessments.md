@@ -34,3 +34,8 @@
 - Mobile pentest
 - Iot pentest
 - Red team Engagement
+
+
+for reporting work there are two tools for screeenshots 
+- greenshot
+- flameshot
