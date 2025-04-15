@@ -34,3 +34,47 @@
 | /30  | 255.255.255.252 | 0.0.0.3         | 4          | 2          |
 | /31  | 255.255.255.254 | 0.0.0.1         | 2          | 2          |
 | /32  | 255.255.255.255 | 0.0.0.0         | 1          | 1          |
+
+we created a python tool that will do all the work
+
+```
+import ipaddress
+
+def subnet_info(ip_cidr):
+    try:
+        network = ipaddress.IPv4Network(ip_cidr, strict=False)
+    except ValueError as e:
+        return f"Error: {e}"
+
+    subnet_mask = network.netmask
+    wildcard_mask = ipaddress.IPv4Address(int(network.hostmask))
+    total_hosts = network.num_addresses - 2 if network.prefixlen < 31 else network.num_addresses
+    first_host = list(network.hosts())[0] if total_hosts >= 1 else "N/A"
+    last_host = list(network.hosts())[-1] if total_hosts >= 1 else "N/A"
+
+    result = {
+        "IP with CIDR": ip_cidr,
+        "Network Address": str(network.network_address),
+        "Broadcast Address": str(network.broadcast_address),
+        "Subnet Mask": str(subnet_mask),
+        "Wildcard Mask": str(wildcard_mask),
+        "CIDR": f"/{network.prefixlen}",
+        "Total Hosts": total_hosts,
+        "Usable Host Range": f"{first_host} - {last_host}" if total_hosts >= 1 else "N/A"
+    }
+
+    return result
+
+# Example usage:
+if __name__ == "__main__":
+    user_input = input("Enter IP/CIDR (e.g. 192.168.1.0/24): ")
+    info = subnet_info(user_input)
+    
+    if isinstance(info, dict):
+        print("\n📡 Subnet Info:")
+        for key, value in info.items():
+            print(f"{key}: {value}")
+    else:
+        print(info)
+
+```
