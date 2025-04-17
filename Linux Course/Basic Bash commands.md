@@ -21,6 +21,7 @@
 `su` - allow to switch user credential.
 `aria2c` - The ultra fast download utility.
 `apropos` - used to search the name section of all man pages.
-`whatis` it gives a brief discription of the given command
-
-
+`whatis` - it gives a brief discription of the given command.
+`sudo -root` - this will help out user to switch in the root account.
+`%editors ALL = sudoedit /home/etc/filename or path` - now anyone can edit the file without admin privillege.
+`visudo` - verify suoers syntex before committing changes.
