@@ -1,0 +1,7 @@
+{
+  "font_folder": ".obsidian/fonts/",
+  "font": "PatrickHand-Regular.ttf",
+  "force_mode": true,
+  "custom_css_mode": true,
+  "custom_css": ":root * {\n\t\t--font-default: PatrickHand-Regular;\n\t\t--default-font: PatrickHand-Regular;\n\t\t--font-family-editor: PatrickHand-Regular;\n\t\t--font-monospace-default: PatrickHand-Regular,\n\t\t--font-interface-override: PatrickHand-Regular,\n\t\t--font-text-override: PatrickHand-Regular,\n\t\t--font-monospace-override: PatrickHand-Regular,\t\n\t}\n"
+}
