@@ -1,4 +1,6 @@
 [
   "custom-font-loader",
-  "github-sync"
+  "github-sync",
+  "fit",
+  "github-link"
 ]
